@@ -1,11 +1,23 @@
-import Sidebar from "./Sidebar";
-import Tiptap from "./Tiptap";
+import { Session } from "@supabase/supabase-js";
+import { useState, useEffect, useContext } from "react";
+import React from "react";
+import LoggedInApp from "./LoggedInApp";
+import { SupabaseClientContext } from "./SupabaseClientContext";
+import Auth from "./Auth";
 
 export default function App() {
-  return (
-    <div className="flex flex-row">
-      <Sidebar className="h-screen basis-1/6" />
-      <Tiptap className="h-screen basis-5/6" />
-    </div>
-  );
+  const supabaseClient = useContext(SupabaseClientContext);
+  const [session, setSession] = useState<Session | null>(null);
+
+  useEffect(() => {
+    supabaseClient.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    supabaseClient.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, []);
+
+  return <>{!session ? <Auth /> : <LoggedInApp session={session} />}</>;
 }
