@@ -33,7 +33,7 @@ export default function Auth() {
 
   return (
     <div className="bg-white dark:bg-rwb-background-dark h-screen w-screen grid place-items-center">
-      <div className="prose w-1/2">
+      <div className="prose dark:prose-invert w-1/2">
         <h1 className="text-center underline decoration-red-700">Redpen</h1>
         {loading ? (
           <p>Sending magic link...</p>
