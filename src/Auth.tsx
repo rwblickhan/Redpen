@@ -13,7 +13,13 @@ export default function Auth() {
 
     try {
       setLoading(true);
-      const { error } = await supabaseClient.auth.signInWithOtp({ email });
+      console.log(`origin: ${window.location.origin}`);
+      const { error } = await supabaseClient.auth.signInWithOtp({
+        email,
+        // Important: The email should redirect to the current origin
+        //            Otherwise this will break on localhost
+        options: { emailRedirectTo: window.location.origin },
+      });
       if (error) throw error;
       alert("Check your email for the login link!");
     } catch (error: unknown) {
