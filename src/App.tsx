@@ -4,6 +4,8 @@ import React from "react";
 import LoggedInApp from "./LoggedInApp";
 import { SupabaseClientContext } from "./SupabaseClientContext";
 import Auth from "./Auth";
+import "@fontsource/vollkorn";
+import "@fontsource/fira-mono";
 
 export default function App() {
   const supabaseClient = useContext(SupabaseClientContext);

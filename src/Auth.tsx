@@ -26,29 +26,31 @@ export default function Auth() {
   };
 
   return (
-    <div className="flex flex-row justify-center">
-      <div className="w-5/12 flex flex-col" aria-live="polite">
-        <h1 className="w-full mb-5">Supabase + React</h1>
-        <p className="description">
-          Sign in via magic link with your email below
-        </p>
+    <div className="bg-white dark:bg-rwb-background-dark h-screen w-screen grid place-items-center">
+      <div className="prose w-1/2">
+        <h1 className="text-center underline decoration-red-700">Redpen</h1>
         {loading ? (
-          "Sending magic link..."
+          <p>Sending magic link...</p>
         ) : (
-          <form onSubmit={handleLogin}>
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              className="inputField"
-              type="email"
-              placeholder="Your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <button className="button block" aria-live="polite">
-              Send magic link!
-            </button>
-          </form>
+          <div className="bg-rwb-slate-light dark:bg-neutral-800 my-4 px-5 pt-4 pb-1.5 max-w-3xl mx-auto rounded">
+            <form onSubmit={handleLogin}>
+              <label htmlFor="bd-email">Email</label>
+              <input
+                type="email"
+                id="bd-email"
+                name="email"
+                placeholder="Your email"
+                className="block mb-4 px-4 py-3 w-full bg-white dark:bg-neutral-900 border border-slate-400 rounded"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="submit"
+                value="Send magic link!"
+                className="block mb-2 px-4 py-3 w-full text-white dark:text-rwb-text-dark bg-rwb-link-light dark:bg-rwb-button-background-dark border-0 rounded cursor-pointer"
+              />
+            </form>
+          </div>
         )}
       </div>
     </div>
