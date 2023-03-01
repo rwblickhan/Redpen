@@ -25,18 +25,21 @@ export default function Sidebar({ className, session }: Props) {
   };
 
   return (
-    <>
-      <div className={className + " bg-slate-600"}>
-        <p>Redpen</p>
-        <div>
-          <button
-            className="border border-blue-600 rounded p-2 bg-blue-600"
-            onClick={() => supabaseClient.auth.signOut()}
-          >
-            Log out
-          </button>
-        </div>
+    <div
+      className={
+        className +
+        " prose dark:prose-invert bg-black slate-600 p-2 flex flex-col justify-between"
+      }
+    >
+      <h1 className="text-white underline decoration-red-700">Redpen</h1>
+      <div>
+        <button
+          className="text-white border border-blue-600 rounded p-2 bg-blue-600 w-full"
+          onClick={() => supabaseClient.auth.signOut()}
+        >
+          Log out
+        </button>
       </div>
-    </>
+    </div>
   );
 }

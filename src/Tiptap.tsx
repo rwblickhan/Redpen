@@ -19,6 +19,11 @@ export default function Tiptap({ className }: Props) {
   });
 
   return (
-    <EditorContent className={className + " overflow-auto"} editor={editor} />
+    <EditorContent
+      className={
+        className + " overflow-auto bg-white dark:bg-rwb-background-dark"
+      }
+      editor={editor}
+    />
   );
 }
